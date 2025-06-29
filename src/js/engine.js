@@ -1,21 +1,20 @@
-import {  state  } from './state.js'
-import {  drawCards  } from './draw_cards.js'
+import {  state  } from './state.js';
+import {  renderGameCards  } from './render_game_cards.js'
+import {  resetDuel  } from './reset_duel.js';
 
 
 
-function init(){
+function initializeGame(){
+    renderGameCards();
+  
+    state.actions.button.addEventListener("click", () => resetDuel());
 
-    const widthOfScreen = window.innerWidth;
-
-    if(widthOfScreen < 768){
-        drawCards(4, state.playerSides.player1);
-        drawCards(4, state.playerSides.computer);
-    }else {
-        drawCards(5, state.playerSides.player1);
-        drawCards(5, state.playerSides.computer);
-    }
-
+    const bgm = document.getElementById('bgm');
+    bgm.play()
 
 }
 
-init()
+initializeGame()
+
+
+
