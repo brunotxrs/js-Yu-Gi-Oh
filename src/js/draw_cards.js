@@ -1,5 +1,10 @@
 import {  cardData  } from './card_data.js';
-import {  state  } from './state.js'
+import {  state  } from './state.js';
+import {  removeAllCardsImages  } from './remove_all_cards_images.js';
+import {  checkDuelResults  } from './check_duel_results.js';
+import {  drawButton  } from './draw_btn.js';
+import {  updateScore  } from './update_score.js';
+import {  showHiddenCardFieldsImages  } from './show_hidden_card_fields_images.js';
 
 const cardBack = "./src/assets/icons/card-back.png"
 
@@ -49,7 +54,32 @@ async function createCardImage(IdCard, fieldSide) {
 
 }
 
-// implementar a função SetCardFields
+async function setCardsField(cardId) {
+    
+
+    const widthOfScreen = window.innerWidth;
+
+    if(widthOfScreen > 768){
+        await removeAllCardsImages();
+    }
+
+    let computerCardId = await getRandomCardId();
+
+
+    showHiddenCardFieldsImages(true);
+
+
+    state.fieldCards.player.src = cardData[cardId].img;
+    state.fieldCards.computer.src = cardData[computerCardId].img;
+
+    let duelResults = await checkDuelResults(cardId, computerCardId);
+
+    await updateScore();
+    await drawButton(duelResults);
+
+}
+
+
 
 async function drawSelectCard(index) {
     state.cardSprites.avatar.src = cardData[index].img;
