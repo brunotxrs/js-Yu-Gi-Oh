@@ -22,7 +22,9 @@ const state = {
 
     playerSides: {
         player1: "player-cards",
+        player1BOX: document.querySelector("#player-cards"),
         computer: "computer-cards",
+        computerBOX: document.querySelector("#computer-cards"),
     }
 };
 
