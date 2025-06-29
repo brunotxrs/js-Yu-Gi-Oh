@@ -8,3 +8,17 @@
   font-family: "Press Start 2P", cursive;
   user-select: none;
 }
+
+
+body {
+  cursor: url("../assets/cursor/yugicursor.png"), default;
+}
+
+button,
+a,
+img,
+button:hover,
+a:hover,
+img:hover {
+ cursor: url("../assets/cursor/yamiyugicursorGLOW.png"), default; 
+}
